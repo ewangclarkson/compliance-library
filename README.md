@@ -68,7 +68,7 @@ The host application must have the following libraries installed:
 
 You can install the library using your preferred package manager:
 
-```
+```shell script
 npm i compliance-library
 ```
 ## Usage
