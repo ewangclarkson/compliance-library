@@ -1,5 +1,5 @@
 
-export default class KafkaPayload {
+export default class KafkaResponse {
     payload!: any;
     correlationId!: string;
 }
