@@ -10,13 +10,22 @@ export default class ElasticSearchClientManager {
 
     private constructor(private appConfigurations: AppConfigurationProperties) {
 
-        this.elasticClient = new Client({
-            cloud: {id: this.appConfigurations.elasticCloudId},
-            auth: {
-                username: this.appConfigurations.elasticUsername,
-                password: this.appConfigurations.elasticPassword
-            }
-        });
+        appConfigurations.elasticCloudId ?
+            this.elasticClient = new Client({
+                cloud: {id: this.appConfigurations.elasticCloudId},
+                auth: {
+                    username: this.appConfigurations.elasticUsername,
+                    password: this.appConfigurations.elasticPassword
+                }
+            }) :
+            this.elasticClient = new Client({
+                node: appConfigurations.elasticNodeUrl,
+                auth: {
+                    username: this.appConfigurations.elasticUsername,
+                    password: this.appConfigurations.elasticPassword
+                }
+            });
+
     }
 
     static getInstance() {

@@ -8,6 +8,7 @@ export default class AppConfigurationProperties {
     public readonly privateKey: string = config.has('jwt.privateKey') ? config.get('jwt.privateKey') : '';
     public readonly tokenExpiryTimeInHours: string = config.has('jwt.expiresIn') ? config.get('jwt.expiresIn') : '2h';
     public readonly elasticCloudId: string = config.has("elasticSearch.cloudId") ? config.get("elasticSearch.cloudId") : '';
+    public readonly elasticNodeUrl: string = config.has("elasticSearch.nodeUrl") ? config.get("elasticSearch.nodeUrl") : '';
     public readonly elasticUsername: string = config.has("elasticSearch.username") ? config.get("elasticSearch.username") : '';
     public readonly elasticPassword: string = config.has("elasticSearch.password") ? config.get("elasticSearch.password") : '';
     public readonly elasticLogsIndex: string = config.has("elasticSearch.logsIndex") ? config.get("elasticSearch.logsIndex") : 'app_logs';

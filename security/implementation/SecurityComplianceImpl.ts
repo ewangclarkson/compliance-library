@@ -26,8 +26,9 @@ export default class SecurityComplianceImpl implements SecurityCompliance {
 
     async authCompliance(request: Request, response: Response, next: NextFunction): Promise<any> {
         try {
-            const tokenString = request.header("Authorization") + '';
-            if (tokenString.length === 0) return response.status(HttpStatus.FORBIDDEN).send("Access denied");
+            const tokenString: null | string = request.header("Authorization");
+
+            if (!tokenString) return response.status(HttpStatus.FORBIDDEN).send("Access denied");
 
             const token = tokenString.replace("Bearer ", "");
             const user = await verify(token, this.appConfiguration.privateKey);
